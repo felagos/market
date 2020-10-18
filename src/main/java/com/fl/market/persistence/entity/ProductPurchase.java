@@ -2,10 +2,7 @@ package com.fl.market.persistence.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -22,5 +19,13 @@ public class ProductPurchase {
 
     @Column(name = "estado")
     private Boolean state;
+
+    @ManyToOne
+    @JoinColumn(name = "id_compra", insertable = false, updatable = false)
+    private Purchase purchase;
+
+    @ManyToOne
+    @JoinColumn(name = "id_producto", insertable = false, updatable = false)
+    private Product product;
 
 }

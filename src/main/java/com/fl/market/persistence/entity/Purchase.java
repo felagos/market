@@ -30,4 +30,11 @@ public class Purchase {
     @Column(name = "estado")
     private Boolean state;
 
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
+    private Customer customer;
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductPurchase> productPurchases;
+
 }

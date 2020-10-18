@@ -32,4 +32,8 @@ public class Product {
     @Column(name = "estado")
     private Boolean state;
 
+    @ManyToMany
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+    private Category category;
+
 }

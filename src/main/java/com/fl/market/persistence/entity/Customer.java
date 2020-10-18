@@ -2,15 +2,12 @@ package com.fl.market.persistence.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "clientes")
-public class Custmoer {
+public class Customer {
 
     @Id
     private String id;
@@ -29,5 +26,8 @@ public class Custmoer {
 
     @Column(name = "correo_electronico")
     private String email;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Purchase> purchases;
 
 }
