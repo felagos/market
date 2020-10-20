@@ -7,33 +7,33 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "productos")
-public class Product {
+public class Producto {
 
     @Id
     @Column(name = "id_producto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProduct;
+    private Long idProducto;
 
     @Column(name = "nombre")
-    private String name;
+    private String nombre;
 
     @Column(name = "id_categoria")
-    private Long idCategory;
+    private Long idCategoria;
 
-    @Column(name = "codigo_barra")
-    private String barCode;
+    @Column(name = "codigo_barras")
+    private String codigoBarras;
 
     @Column(name = "precio_venta")
-    private Integer price;
+    private Integer precioVenta;
 
     @Column(name = "cantidad_stock")
-    private Integer stock;
+    private Integer cantidadStock;
 
     @Column(name = "estado")
-    private Boolean state;
+    private Boolean estado;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-    private Category category;
+    private Categoria categoria;
 
 }

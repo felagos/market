@@ -7,25 +7,25 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "compras_productos")
-public class ProductPurchase {
+public class ProductoCompra {
 
     @EmbeddedId
-    private ProductPurchasePK id;
+    private ProductoCompraPK id;
 
     @Column(name = "cantidad")
-    private Integer quantity;
+    private Integer cantidad;
 
     private Double total;
 
     @Column(name = "estado")
-    private Boolean state;
+    private Boolean estado;
 
     @ManyToOne
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
-    private Purchase purchase;
+    private Compra compra;
 
     @ManyToOne
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
-    private Product product;
+    private Producto producto;
 
 }

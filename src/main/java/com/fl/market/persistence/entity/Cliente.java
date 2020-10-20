@@ -3,31 +3,32 @@ package com.fl.market.persistence.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "clientes")
-public class Customer {
+public class Cliente {
 
     @Id
     private String id;
 
     @Column(name = "nombre")
-    private String name;
+    private String nombre;
 
     @Column(name = "apellido")
-    private String lastName;
+    private String apellido;
 
     @Column(name = "celular")
-    private Integer phoneNumber;
+    private Integer celular;
 
     @Column(name = "direccion")
-    private String address;
+    private String direccion;
 
     @Column(name = "correo_electronico")
-    private String email;
+    private String correoElectronico;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Purchase> purchases;
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
 
 }

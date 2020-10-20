@@ -1,6 +1,6 @@
 package com.fl.market.persistence.crud;
 
-import com.fl.market.persistence.entity.Product;
+import com.fl.market.persistence.entity.Producto;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,10 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ProductCrudRepository extends CrudRepository<Product, Long> {
+public interface ProductCrudRepository extends CrudRepository<Producto, Long> {
 
-    public List<Product> findByIdCategoryOrderByNameAsc(Long idCategory);
-
-    public Optional<List<Product>> findByStockLessThanAndState(Integer stock, Boolean state);
+    public List<Producto> findByIdCategoriaOrderByNombreAsc(Long idCategoria);
+    public Optional<List<Producto>> findByCantidadStockLessThanAndEstado(Integer cantidadStock, Boolean estado);
 
 }

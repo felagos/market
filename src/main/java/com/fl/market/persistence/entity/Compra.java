@@ -4,37 +4,38 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "compras")
-public class Purchase {
+public class Compra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compra")
-    private Long idPurchase;
+    private Long idCompra;
 
     @Column(name = "id_cliente")
-    private Long idClient;
+    private Long idCliente;
 
     @Column(name = "fecha_pago")
-    private LocalDateTime payDate;
+    private LocalDateTime fechaPago;
 
     @Column(name = "medio_pago")
-    private String paymentMethod;
+    private String medioPago;
 
     @Column(name = "comentario")
-    private String comment;
+    private String comentario;
 
     @Column(name = "estado")
-    private Boolean state;
+    private Boolean estado;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
-    private Customer customer;
+    private Cliente cliente;
 
-    @OneToMany(mappedBy = "product")
-    private List<ProductPurchase> productPurchases;
+    @OneToMany(mappedBy = "producto")
+    private List<ProductoCompra> productosComrpas;
 
 }

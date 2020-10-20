@@ -8,20 +8,20 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "categorias")
-public class Category {
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
-    private Long idCategory;
+    private Long idCategoria;
 
     @Column(name = "descripcion")
-    private String description;
+    private String descripcion;
 
     @Column(name = "estado")
-    private Boolean state;
+    private Boolean estado;
 
-    @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto> productos;
 
 }
