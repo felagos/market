@@ -1,13 +1,20 @@
 package com.fl.market;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
+@ActiveProfiles("test")
 class MarketApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
+    
+    @Test
+    void contextLoads() {
+        System.out.println("url " + url);
+    }
 
 }

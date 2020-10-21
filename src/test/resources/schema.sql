@@ -2,7 +2,7 @@
 -- Table "CATEGORIAS"
 -- -----------------------------------------------------
 CREATE TABLE  CATEGORIAS (
-  "id_categoria" SERIAL NOT NULL,
+  "id_categoria" int AUTO_INCREMENT NOT NULL,
   "descripcion" VARCHAR(45) NOT NULL,
   "estado" BOOLEAN NOT NULL,
   PRIMARY KEY ("id_categoria"));
@@ -12,7 +12,7 @@ CREATE TABLE  CATEGORIAS (
 -- Table "PRODUCTOS"
 -- -----------------------------------------------------
 CREATE TABLE  PRODUCTOS (
-  "id_producto" SERIAL NOT NULL,
+  "id_producto" int AUTO_INCREMENT NOT NULL,
   "nombre" VARCHAR(45) NULL,
   "id_categoria" INT NOT NULL,
   "codigo_barras" VARCHAR(150) NULL,
@@ -44,7 +44,7 @@ CREATE TABLE  CLIENTES (
 -- Table "COMPRAS"
 -- -----------------------------------------------------
 CREATE TABLE  COMPRAS (
-  "id_compra" SERIAL NOT NULL,
+  "id_compra" int AUTO_INCREMENT NOT NULL,
   "id_cliente" VARCHAR(20) NOT NULL,
   "fecha" TIMESTAMP NULL,
   "medio_pago" CHAR(1) NULL,
