@@ -13,5 +13,6 @@ public interface ProductRepository {
     public Optional<Product> getProduct(long productId);
     public Product save(Product product);
     public void delete(long productId);
+    public Optional<Product> update(long productId, Product product);
 
 }

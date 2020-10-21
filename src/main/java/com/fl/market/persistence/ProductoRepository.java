@@ -53,4 +53,20 @@ public class ProductoRepository implements ProductRepository {
     public void delete(long productId) {
         this.productCrudRepository.deleteById(productId);
     }
+
+    @Override
+    public Optional<Product> update(long productId, Product product) {
+        return this.getProduct(productId).map(p -> {
+            product.setProductId(p.getProductId());
+            return this.save(product);
+        });
+        /*var productobd = productCrudRepository.findById(productId);
+        return productobd.map(p -> {
+            var producto = this.mapper.toProducto(product);
+            producto.setPrecioVenta(product.getPrice());
+            producto = productCrudRepository.save(producto);
+
+            return Optional.of(mapper.toProduct(producto));
+        });*/
+    }
 }

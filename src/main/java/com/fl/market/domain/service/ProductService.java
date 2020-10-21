@@ -37,4 +37,8 @@ public class ProductService {
         }).orElse(false);
     }
 
+    public Optional<Product> update(long productId, Product product) {
+        return productRepository.update(productId, product);
+    }
+
 }

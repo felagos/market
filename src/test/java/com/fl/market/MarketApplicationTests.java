@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @ActiveProfiles("test")
 class MarketApplicationTests {
-    
+
     @Test
     void contextLoads() {
         System.out.println("url " + url);
