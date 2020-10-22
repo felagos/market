@@ -7,10 +7,10 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "compras_productos")
-public class ProductoCompra {
+public class CompraProducto {
 
     @EmbeddedId
-    private ProductoCompraPK id;
+    private CompraProductoPK id;
 
     @Column(name = "cantidad")
     private Integer cantidad;
