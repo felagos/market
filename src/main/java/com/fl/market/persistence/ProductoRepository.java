@@ -2,7 +2,7 @@ package com.fl.market.persistence;
 
 import com.fl.market.domain.Product;
 import com.fl.market.domain.repository.ProductRepository;
-import com.fl.market.persistence.crud.ProductCrudRepository;
+import com.fl.market.persistence.crud.ProductoCrudRepository;
 import com.fl.market.persistence.entity.Producto;
 import com.fl.market.persistence.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class ProductoRepository implements ProductRepository {
 
     @Autowired
-    private ProductCrudRepository productCrudRepository;
+    private ProductoCrudRepository productCrudRepository;
 
     @Autowired
     private ProductMapper mapper;

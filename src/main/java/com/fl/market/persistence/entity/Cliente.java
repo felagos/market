@@ -16,11 +16,11 @@ public class Cliente {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "apellido")
-    private String apellido;
+    @Column(name = "apellidos")
+    private String apellidos;
 
     @Column(name = "celular")
-    private Integer celular;
+    private Long celular;
 
     @Column(name = "direccion")
     private String direccion;
