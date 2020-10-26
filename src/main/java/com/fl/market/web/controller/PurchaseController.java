@@ -2,6 +2,7 @@ package com.fl.market.web.controller;
 
 import com.fl.market.domain.Purchase;
 import com.fl.market.domain.service.PurchaseService;
+import com.fl.market.web.response.ResponseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -19,7 +20,7 @@ public class PurchaseController extends BaseController {
     private PurchaseService purchaseService;
 
     @GetMapping("/")
-    public ResponseEntity getAll() {
+    public ResponseEntity<ResponseController<?>> getAll() {
         return this.okResponse("Compras encontradas", purchaseService.getAll());
     }
 
