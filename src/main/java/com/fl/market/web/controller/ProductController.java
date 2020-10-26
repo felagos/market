@@ -3,6 +3,10 @@ package com.fl.market.web.controller;
 import com.fl.market.domain.Product;
 import com.fl.market.domain.service.ProductService;
 import com.fl.market.web.response.ResponseController;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +23,19 @@ public class ProductController extends BaseController {
     private ProductService productService;
 
     @GetMapping("/")
+    @ApiOperation("Get all products")
+    @ApiResponse(code = 200, message = "OK")
     public ResponseEntity getAll() {
         return this.okResponse("Productos encontrados", productService.getAll());
     }
 
     @GetMapping("/{productId}")
-    public ResponseEntity getProduct(@PathVariable Integer productId) {
+    @ApiOperation("Search a product by id")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Product not found")
+    })
+    public ResponseEntity getProduct(@ApiParam(value = "The id product", required = true, example = "7") @PathVariable Integer productId) {
         return productService.getProduct(productId).map(product -> this.okResponse("Producto encontrado", product))
                 .orElse(this.notFoundResponse("Producto no encontrado"));
     }
@@ -36,7 +47,7 @@ public class ProductController extends BaseController {
     }
 
     @PostMapping("/")
-    public ResponseEntity save(Product product) {
+    public ResponseEntity save(@RequestBody Product product) {
         return this.createdResponse("Producto creado", productService.save(product));
     }
 
