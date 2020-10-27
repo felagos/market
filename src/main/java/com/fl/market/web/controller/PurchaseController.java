@@ -25,14 +25,14 @@ public class PurchaseController extends BaseController {
     }
 
     @GetMapping("/client/{idClient}")
-    public ResponseEntity getByClient(@PathVariable("idClient") @Pattern(regexp = "^[0-9]+$", message = "Only digists") String clientId) {
+    public ResponseEntity<ResponseController<?>> getByClient(@PathVariable("idClient") @Pattern(regexp = "^[0-9]+$", message = "Only digists") String clientId) {
         return purchaseService.getByClient(clientId)
                 .map(purchases -> this.okResponse("Compras encontradas", purchases))
                 .orElse(this.notFoundResponse("Cliente no encontrado"));
     }
 
     @PostMapping("/")
-    public ResponseEntity save(@Valid @RequestBody Purchase purchase) {
+    public ResponseEntity<ResponseController<?>> save(@Valid @RequestBody Purchase purchase) {
         return this.createdResponse("Compra creada", purchaseService.save(purchase));
     }
 

@@ -1,6 +1,7 @@
 package com.fl.market.web.controller;
 
 import com.fl.market.domain.service.ProductService;
+import com.fl.market.web.response.ResponseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ public class CategoryController extends BaseController {
     private ProductService productService;
 
     @GetMapping("/category/{categoryId}")
-    public ResponseEntity getByCategory(@PathVariable Integer categoryId) {
+    public ResponseEntity<ResponseController<?>> getByCategory(@PathVariable Integer categoryId) {
         return productService.getByCategory(categoryId).map(category -> this.okResponse("Categoria encontrada", category))
                 .orElse(this.notFoundResponse("Categoria no encotrada"));
     }

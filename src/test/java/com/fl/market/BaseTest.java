@@ -1,12 +1,12 @@
 package com.fl.market;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.MockitoAnnotations;
 
 public class BaseTest {
 
-    @Before
-    public void setup() {
+    @BeforeEach
+    public void setupMock() {
         MockitoAnnotations.initMocks(this);
     }
 
