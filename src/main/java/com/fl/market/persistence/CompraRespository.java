@@ -33,8 +33,10 @@ public class CompraRespository implements PurchaseRepository {
 
     @Override
     public Purchase save(Purchase purchase) {
+        System.out.println(purchase);
         var compra = mapper.toCompra(purchase);
-        compra.getProductos().forEach(producto -> producto.setCompra(compra));
+        System.out.println(compra);
+        //compra.getProductos().forEach(producto -> producto.setCompra(compra));
         return mapper.toPurchase(compraRespository.save(compra));
     }
 
