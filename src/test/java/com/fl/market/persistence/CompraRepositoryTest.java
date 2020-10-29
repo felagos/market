@@ -6,7 +6,7 @@ import com.fl.market.domain.PurchaseItem;
 import com.fl.market.persistence.crud.CompraCrudRepository;
 import com.fl.market.persistence.entity.Compra;
 import com.fl.market.persistence.entity.CompraProducto;
-import com.fl.market.persistence.entity.Producto;
+import com.fl.market.persistence.mapper.PurchaseItemMapper;
 import com.fl.market.persistence.mapper.PurchaseMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,10 +16,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +30,9 @@ public class CompraRepositoryTest extends BaseTest {
 
     @Spy
     private PurchaseMapper mapper = Mappers.getMapper(PurchaseMapper.class);
+
+    @Spy
+    private PurchaseItemMapper itemMapper= Mappers.getMapper(PurchaseItemMapper.class);
 
     @InjectMocks
     private CompraRespository compraRespository;
@@ -48,28 +49,25 @@ public class CompraRepositoryTest extends BaseTest {
         COMPRA.setComentario("comment");
         COMPRA.setEstado("activo");
         COMPRA.setIdCliente("1");
-        COMPRA.setIdCompra(1L);
+        COMPRA.setIdCompra(1);
         COMPRA.setFechaPago(LocalDateTime.now());
         COMPRA.setMedioPago("tarjeta");
 
         COMPRA_PRODUCTO.setCantidad(100);
         COMPRA_PRODUCTO.setEstado(true);
-        COMPRA_PRODUCTO.setTotal(100000.0);
-
-        //COMPRA.setProductos(Arrays.asList(COMPRA_PRODUCTO));
+        COMPRA_PRODUCTO.setTotal(Long.valueOf(10000));
 
         ITEM.setActive(true);
         ITEM.setProductId(1L);
         ITEM.setQuantity(1);
         ITEM.setTotal(1.0);
 
-        PURCHASE.setClientId("1");
+        PURCHASE.setClientId("4546221");
         PURCHASE.setComment("comment");
         PURCHASE.setDate(LocalDateTime.now());
-        PURCHASE.setPurchaseId(1L);
-        //PURCHASE.setItems(Arrays.asList(ITEM));
-        PURCHASE.setState("D");
-        PURCHASE.setPaymentMethod("card");
+        PURCHASE.setState("P");
+        PURCHASE.setPaymentMethod("E");
+        PURCHASE.setItems(new ArrayList<>());
 
         COMPRAS.add(COMPRA);
     }
@@ -95,9 +93,16 @@ public class CompraRepositoryTest extends BaseTest {
 
     @Test
     public void save() {
-        Mockito.when(compraCrudRespository.save(COMPRA)).thenReturn(COMPRA);
+
+        Mockito.when(compraCrudRespository.save(any(Compra.class))).thenReturn(COMPRA);
+        Mockito.when(itemMapper.toPurchaseItem(any(CompraProducto.class))).thenReturn(ITEM);
 
         var response = compraRespository.save(PURCHASE);
+
+        Assertions.assertEquals(response.getClientId(), COMPRA.getIdCliente());
+        Assertions.assertEquals(response.getComment(), COMPRA.getComentario());
+        Assertions.assertEquals(response.getDate(), COMPRA.getFechaPago());
+        Assertions.assertEquals(response.getPaymentMethod(), COMPRA.getMedioPago());
     }
 
 
