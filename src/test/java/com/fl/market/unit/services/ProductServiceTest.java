@@ -1,4 +1,4 @@
-package com.fl.market.services;
+package com.fl.market.unit.services;
 
 import com.fl.market.BaseTest;
 import com.fl.market.domain.Product;

@@ -1,4 +1,4 @@
-package com.fl.market.controller;
+package com.fl.market.unit.controller;
 
 import com.fl.market.BaseTest;
 import com.fl.market.domain.Product;

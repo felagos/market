@@ -1,8 +1,9 @@
-package com.fl.market.persistence;
+package com.fl.market.unit.persistence;
 
 import com.fl.market.BaseTest;
 import com.fl.market.domain.Purchase;
 import com.fl.market.domain.PurchaseItem;
+import com.fl.market.persistence.CompraRespository;
 import com.fl.market.persistence.crud.CompraCrudRepository;
 import com.fl.market.persistence.entity.Compra;
 import com.fl.market.persistence.entity.CompraProducto;
