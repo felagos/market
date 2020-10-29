@@ -16,8 +16,9 @@ public class CategoryController extends BaseController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/category/{categoryId}")
+    @GetMapping("/{categoryId}")
     public ResponseEntity<ResponseController<?>> getByCategory(@PathVariable Integer categoryId) {
+        System.out.println("ACCAAA " + categoryId);
         return productService.getByCategory(categoryId).map(category -> this.okResponse("Categoria encontrada", category))
                 .orElse(this.notFoundResponse("Categoria no encotrada"));
     }
