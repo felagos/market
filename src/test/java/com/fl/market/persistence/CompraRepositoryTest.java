@@ -49,13 +49,13 @@ public class CompraRepositoryTest extends BaseTest {
         COMPRA.setComentario("comment");
         COMPRA.setEstado("activo");
         COMPRA.setIdCliente("1");
-        COMPRA.setIdCompra(1);
+        COMPRA.setIdCompra(1L);
         COMPRA.setFechaPago(LocalDateTime.now());
         COMPRA.setMedioPago("tarjeta");
 
         COMPRA_PRODUCTO.setCantidad(100);
         COMPRA_PRODUCTO.setEstado(true);
-        COMPRA_PRODUCTO.setTotal(Long.valueOf(10000));
+        COMPRA_PRODUCTO.setTotal(1000088.9);
 
         ITEM.setActive(true);
         ITEM.setProductId(1L);
