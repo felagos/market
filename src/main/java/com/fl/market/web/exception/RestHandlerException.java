@@ -1,6 +1,7 @@
-package com.fl.market.web.validation;
+package com.fl.market.web.exception;
 
 import com.fl.market.domain.ErrorField;
+import com.fl.market.web.response.ApiErrorResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +16,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @ControllerAdvice
-public class ConstraintValidation extends ResponseEntityExceptionHandler {
+public class RestHandlerException extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,
                                                                   HttpStatus status, WebRequest request) {
-
-        var body = new HashMap<String, Object>();
 
         var errors = ex.getBindingResult()
                 .getFieldErrors()
@@ -30,15 +29,24 @@ public class ConstraintValidation extends ResponseEntityExceptionHandler {
                 .map(x -> new ErrorField(x.getField(), x.getDefaultMessage()))
                 .collect(Collectors.toList());
 
-        body.put("errors", errors);
+        var apiError = new ApiErrorResponse<List<ErrorField>>(errors, ex.getStackTrace()[0].getClassName(), status.BAD_REQUEST);
 
-        return new ResponseEntity<>(body, headers, status);
-
+        return handleExceptionInternal(ex, apiError, headers, status.BAD_REQUEST, request);
     }
 
     @ExceptionHandler(value = {ConstraintViolationException.class})
-    protected ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException e, WebRequest request) {
-        return handleExceptionInternal(e, e.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    protected ResponseEntity<Object> handleConstraintException(ConstraintViolationException ex, WebRequest request) {
+        var messages = ex.getMessage().split(", ");
+        var apiError = new ApiErrorResponse<String[]>(messages, ex.getStackTrace()[0].getClassName(), HttpStatus.BAD_REQUEST);
+
+        return handleExceptionInternal(ex, apiError, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler(value = {Exception.class})
+    public ResponseEntity<Object> handleGenericException(Exception ex, WebRequest request) {
+        var apiError = new ApiErrorResponse<String>(ex.getMessage(), ex.getStackTrace()[0].getClassName(), HttpStatus.OK);
+
+        return handleExceptionInternal(ex, apiError, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
 
 }
