@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 public class CategoryIntegrationTest extends BaseIntegrationTest {
 
     @Test
-    public void test() throws Exception {
+    public void get_by_category_id() throws Exception {
         var response = restTemplate.getForEntity(createURLWithPort("/api/category/8"), ResponseController.class);
 
         Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
