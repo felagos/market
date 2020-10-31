@@ -1,6 +1,6 @@
 package com.fl.market.unit.persistence;
 
-import com.fl.market.BaseTest;
+import com.fl.market.unit.controller.BaseUnitTest;
 import com.fl.market.domain.Purchase;
 import com.fl.market.domain.PurchaseItem;
 import com.fl.market.persistence.CompraRespository;
@@ -24,7 +24,7 @@ import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 
-public class CompraRepositoryTest extends BaseTest {
+public class CompraRepositoryTest extends BaseUnitTest {
 
     @Mock
     private CompraCrudRepository compraCrudRespository;

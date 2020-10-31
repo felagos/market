@@ -1,6 +1,6 @@
 package com.fl.market.unit.services;
 
-import com.fl.market.BaseTest;
+import com.fl.market.unit.controller.BaseUnitTest;
 import com.fl.market.domain.Purchase;
 import com.fl.market.domain.repository.PurchaseRepository;
 import com.fl.market.domain.service.PurchaseService;
@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class PurchaseServiceTest extends BaseTest {
+public class PurchaseServiceTest extends BaseUnitTest {
 
     @Mock
     private PurchaseRepository purchaseRepository;

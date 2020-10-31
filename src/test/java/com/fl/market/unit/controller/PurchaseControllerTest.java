@@ -1,6 +1,5 @@
 package com.fl.market.unit.controller;
 
-import com.fl.market.BaseTest;
 import com.fl.market.domain.Purchase;
 import com.fl.market.domain.service.PurchaseService;
 import com.fl.market.web.controller.PurchaseController;
@@ -19,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class PurchaseControllerTest extends BaseTest {
+public class PurchaseControllerTest extends BaseUnitTest {
 
     @Mock
     private PurchaseService service;

@@ -1,6 +1,5 @@
 package com.fl.market.unit.controller;
 
-import com.fl.market.BaseTest;
 import com.fl.market.domain.Product;
 import com.fl.market.domain.service.ProductService;
 import com.fl.market.web.controller.ProductController;
@@ -17,7 +16,7 @@ import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.*;
 
-public class ProductControllerTest extends BaseTest {
+public class ProductControllerTest extends BaseUnitTest {
 
     @Mock
     private ProductService productService;
