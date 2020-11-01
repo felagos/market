@@ -1,6 +1,6 @@
 package com.fl.market.unit.services;
 
-import com.fl.market.unit.controller.BaseUnitTest;
+import com.fl.market.unit.BaseUnitTest;
 import com.fl.market.domain.Purchase;
 import com.fl.market.domain.repository.PurchaseRepository;
 import com.fl.market.domain.service.PurchaseService;

@@ -2,6 +2,7 @@ package com.fl.market.unit.controller;
 
 import com.fl.market.domain.Product;
 import com.fl.market.domain.service.ProductService;
+import com.fl.market.unit.BaseUnitTest;
 import com.fl.market.web.controller.CategoryController;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

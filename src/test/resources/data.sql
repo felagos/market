@@ -7,6 +7,7 @@ INSERT INTO categorias VALUES (5, 'Bebidas', true);
 INSERT INTO categorias VALUES (6, 'Licores', true);
 INSERT INTO categorias VALUES (7, 'Cuidado personal', true);
 INSERT INTO categorias VALUES (8, 'Despensa', true);
+INSERT INTO categorias VALUES (9, 'Laptops', true);
 
 -- PRODUCTOS
 INSERT INTO productos VALUES (1, 'Guayaba Feijoa', 1, '7029 A42 23', 300, 500, true);
@@ -59,6 +60,7 @@ INSERT INTO productos VALUES (47, 'Aceite', 8, '7333 S21 36', 6500, 135, true);
 INSERT INTO productos VALUES (48, 'Cereal', 8, '4673 K53 98', 7000, 75, true);
 INSERT INTO productos VALUES (49, 'Frijol', 8, '2745 F40 45', 8200, 270, true);
 INSERT INTO productos VALUES (50, 'Café', 8, '6351 R33 92', 7200, 400, true);
+INSERT INTO productos VALUES (51, 'MateBook', 9, '6351 R33 92', 7200, 400, true);
 
 -- CLIENTES
 INSERT INTO clientes VALUES ('4546221', 'Johannes', 'Kepler', 3104583224, 'Cl 3 # 33 - 33', 'kepler@me.com');

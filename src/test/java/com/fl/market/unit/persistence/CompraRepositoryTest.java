@@ -1,6 +1,6 @@
 package com.fl.market.unit.persistence;
 
-import com.fl.market.unit.controller.BaseUnitTest;
+import com.fl.market.unit.BaseUnitTest;
 import com.fl.market.domain.Purchase;
 import com.fl.market.domain.PurchaseItem;
 import com.fl.market.persistence.CompraRespository;

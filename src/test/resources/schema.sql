@@ -1,3 +1,9 @@
+drop table if exists CATEGORIAS;
+drop table if exists PRODUCTOS;
+drop table if exists CLIENTES;
+drop table if exists COMPRAS;
+drop table if exists COMPRAS_PRODUCTOS;
+
 -- -----------------------------------------------------
 -- Table "CATEGORIAS"
 -- -----------------------------------------------------
