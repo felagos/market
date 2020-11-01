@@ -42,11 +42,4 @@ public class RestHandlerException extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, apiError, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
-    @ExceptionHandler(value = {Exception.class})
-    public ResponseEntity<Object> handleGenericException(Exception ex, WebRequest request) {
-        var apiError = new ApiErrorResponse<String>(ex.getMessage(), ex.getStackTrace()[0].getClassName(), HttpStatus.OK);
-
-        return handleExceptionInternal(ex, apiError, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
-    }
-
 }

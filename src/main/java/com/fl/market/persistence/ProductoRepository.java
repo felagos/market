@@ -33,11 +33,6 @@ public class ProductoRepository implements ProductRepository {
     }
 
     @Override
-    public Optional<List<Product>> getScarseProducts(int quantity) {
-        return this.productCrudRepository.findByCantidadStockLessThanAndEstado(quantity, true).map(productos -> this.mapper.toProducts(productos));
-    }
-
-    @Override
     public Optional<Product> getProduct(long productId) {
         return this.productCrudRepository.findById(productId).map(producto -> this.mapper.toProduct(producto));
     }
@@ -45,6 +40,7 @@ public class ProductoRepository implements ProductRepository {
     @Override
     public Product save(Product product) {
         Producto producto = this.mapper.toProducto(product);
+        System.out.println("to save " + producto);
         var newProduct = this.productCrudRepository.save(producto);
         return this.mapper.toProduct(newProduct);
     }
