@@ -24,7 +24,6 @@ public class CategoryIntegrationTest extends BaseTest {
         var response = mockMvc.perform(MockMvcRequestBuilders.get("/category/8")).andReturn();
 
         Assertions.assertEquals(response.getResponse().getStatus(), HttpStatus.OK.value());
-        Assertions.assertNotEquals(response.getResponse().getContentAsString(), "");
 
     }
 
