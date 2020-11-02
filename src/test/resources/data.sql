@@ -76,4 +76,5 @@ INSERT INTO compras_productos(id_compra, id_producto, cantidad, total, estado) V
 INSERT INTO compras_productos(id_compra, id_producto, cantidad, total, estado) VALUES (1, 49, 2, 16400, true);
 INSERT INTO compras_productos(id_compra, id_producto, cantidad, total, estado) VALUES (1, 24, 1, 4000, true);
 
-
+-- USUARIOS
+insert into usuarios(email, password) values ('demo@gmail.com', '$2a$10$co6CWFCApKADD2ulBy.VdeomKtUzGgEuJgUOlkrRX8z6mxqLZ5MNS');

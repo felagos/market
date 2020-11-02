@@ -40,7 +40,6 @@ public class ProductoRepository implements ProductRepository {
     @Override
     public Product save(Product product) {
         Producto producto = this.mapper.toProducto(product);
-        System.out.println("to save " + producto);
         var newProduct = this.productCrudRepository.save(producto);
         return this.mapper.toProduct(newProduct);
     }

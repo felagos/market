@@ -78,3 +78,9 @@ CREATE TABLE  COMPRAS_PRODUCTOS (
     REFERENCES COMPRAS (id_compra)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+CREATE TABLE USUARIOS (
+	email varchar(100) NOT NULL,
+	password varchar(255) NULL,
+	CONSTRAINT usuarios_pk PRIMARY KEY (email)
+);

@@ -18,4 +18,8 @@ public class BaseController {
         return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseController(message, data));
     }
 
+    protected ResponseEntity forbiddenResponse(String message) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ResponseController(message, null));
+    }
+
 }
