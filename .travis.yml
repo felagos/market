@@ -7,10 +7,14 @@ branches:
   only:
     - master
 
+script:
+  - chmod +x ./gradlew
+
 jobs:
   include:
     - stage: test
       script: ./gradlew test
+      
 deploy:
   provider: heroku
   api_key:
