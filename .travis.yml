@@ -14,7 +14,7 @@ jobs:
   include:
     - stage: test
       script: ./gradlew test
-      
+
 deploy:
   provider: heroku
   api_key:
