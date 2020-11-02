@@ -1,13 +1,9 @@
 package com.fl.market.web.security.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fl.market.domain.dto.AuthenticationRequestDTO;
 import com.fl.market.domain.dto.UserDTO;
 import com.fl.market.web.response.ResponseController;
 import com.fl.market.web.security.JWTUtil;
-import io.jsonwebtoken.Jwts;
-import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,8 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -51,8 +45,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         System.out.println(email + " - " + password);
 
         try {
-            AuthenticationRequestDTO credenciales = mapper.readValue(request.getInputStream(), AuthenticationRequestDTO.class);
-            email = credenciales.getUsername();
+            UserDTO credenciales = mapper.readValue(request.getInputStream(), UserDTO.class);
+            email = credenciales.getEmail();
             password = credenciales.getPassword();
 
         } catch (IOException e) {
