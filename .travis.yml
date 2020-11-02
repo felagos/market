@@ -1,0 +1,20 @@
+languague: java
+jdk: oraclejdk13
+
+git:
+  depth: 3
+branches:
+  only:
+    - master
+
+jobs:
+  include:
+    - stage: test
+      script: ./gradlew test
+deploy:
+  provider: heroku
+  api_key:
+    secure: ulxkkKVNakS9B0Sn8T4uR5yKyAmVU8QJ+SHowRMIpoa3vWfdWKrl+wG0RlaCSU/PIJ54vOjTwg/v55qGDaIBPzeOq7ic5UofWAWVwYLZdN32O2ezs/0tJRmY5cs1gSFgA2ZvP3/Oj3Cpkz8aH8kyH87uhJxhwF5IRZg+zoSreTIRqCl8uhN6AfqdH5a7+yCzQd2Ycx/tyK3yj4lOx7i5+PaiEFgHqt2aM509gdKdV/6Jxy3H8ZpE1vH57Li48ajcaNvN+e0yggAeRtTj4fkHA7JA5v/uknRxbkxzG5E+sd4+1eOkB+SMRZ3wxYfA/2IITt/wSD+EfwEMmHs74HQlFY8VuA0VSd511QCeqAay5mQbQb90LP7K5bo8anlSwH/a4OoLeUfKb7ShWUgDFniooSl2+LSMwbHYlUYH9S2jCBv+mlYmxg9Z0xOaPnkrHhE3Hosw+pQsIzEo/lV4jMqa1CX1M7Or1zzrFnWN4T2YZ94zUIe67J2FpCTLpkpT6uCZc++7ecB/mvoBbh4O9CtPqmUXq+hGW1MQ3CTxkQEaGb+LZvGtdZH36mslrmoVHT5vsgAbzIefvLIJ1nWun5JolR9A8pYInFsz+EutkzLftm7VC+dYPQKjK87jANAJw84qwSOd1uRpjh9DIvfD3kpTcouzrt5wx1Drk/vLW+fqVPw=
+  app: spring-boot-market
+  on:
+    repo: felagos/market
