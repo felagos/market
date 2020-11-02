@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.fl'
-version = '0.0.1-SNAPSHOT'
+version = '1.0'
 sourceCompatibility = '13'
 
 configurations {
@@ -64,7 +64,7 @@ jacocoTestCoverageVerification {
     violationRules {
         rule {
             limit {
-                minimum = 0.0
+                minimum = 0.3
             }
         }
     }

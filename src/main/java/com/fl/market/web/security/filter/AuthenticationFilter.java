@@ -42,8 +42,6 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         String email = obtainUsername(request) == null ? "" : obtainUsername(request).trim();
         String password = obtainPassword(request) == null ? "" : obtainPassword(request);
 
-        System.out.println(email + " - " + password);
-
         try {
             UserDTO credenciales = mapper.readValue(request.getInputStream(), UserDTO.class);
             email = credenciales.getEmail();
@@ -52,8 +50,6 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        System.out.println(email + " - " + password);
 
         return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password, new ArrayList<>()));
     }

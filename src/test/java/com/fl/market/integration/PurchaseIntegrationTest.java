@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @TestConfig
-public class PurchaseIntegrationTest {
+public class PurchaseIntegrationTest extends BaseIntegration {
 
     @Autowired
     private MockMvc mockMvc;
@@ -25,17 +25,17 @@ public class PurchaseIntegrationTest {
 
     @Test
     public void get_all_purchases() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/purchases/")).andExpect(MockMvcResultMatchers.status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.get("/purchases/").header("Authorization", TOKEN)).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @Test
     public void get_puchase_by_client() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/purchases/client/4546221")).andExpect(MockMvcResultMatchers.status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.get("/purchases/client/4546221").header("Authorization", TOKEN)).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @Test
     public void get_puchase_by_client_wrong_params() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/purchases/client/4546221L")).andExpect(MockMvcResultMatchers.status().isBadRequest());
+        mockMvc.perform(MockMvcRequestBuilders.get("/purchases/client/4546221L").header("Authorization", TOKEN)).andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class PurchaseIntegrationTest {
         purchase.setItems(Arrays.asList(item));
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/purchases/").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(purchase))
+                MockMvcRequestBuilders.post("/purchases/").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(purchase)).header("Authorization", TOKEN)
         ).andExpect(MockMvcResultMatchers.status().isCreated());
     }
 
@@ -77,7 +77,7 @@ public class PurchaseIntegrationTest {
         purchase.setItems(Arrays.asList(item));
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/purchases/").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(purchase))
+                MockMvcRequestBuilders.post("/purchases/").contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(purchase)).header("Authorization", TOKEN)
         ).andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 }
