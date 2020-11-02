@@ -1,6 +1,6 @@
 package com.fl.market.web.exception;
 
-import com.fl.market.domain.ErrorField;
+import com.fl.market.domain.dto.ErrorField;
 import com.fl.market.web.response.ApiErrorResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

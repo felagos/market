@@ -1,4 +1,4 @@
-package com.fl.market.domain;
+package com.fl.market.domain.dto;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-public class Purchase {
+public class PurchaseDTO {
 
     private long purchaseId;
 
@@ -19,6 +19,6 @@ public class Purchase {
     private String paymentMethod;
     private String comment;
     private String state;
-    private List<PurchaseItem> items;
+    private List<PurchaseItemDTO> items;
 
 }

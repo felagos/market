@@ -1,6 +1,6 @@
 package com.fl.market.persistence.mapper;
 
-import com.fl.market.domain.PurchaseItem;
+import com.fl.market.domain.dto.PurchaseItemDTO;
 import com.fl.market.persistence.entity.CompraProducto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -15,7 +15,7 @@ public interface PurchaseItemMapper {
             @Mapping(source = "cantidad", target = "quantity"),
             @Mapping(source = "estado", target = "active")
     })
-    public PurchaseItem toPurchaseItem(CompraProducto producto);
+    public PurchaseItemDTO toPurchaseItem(CompraProducto producto);
 
     @InheritInverseConfiguration
     @Mappings({
@@ -23,6 +23,6 @@ public interface PurchaseItemMapper {
             @Mapping(target = "producto", ignore = true),
             @Mapping(target = "id.idCompra", ignore = true)
     })
-    public CompraProducto toComprasProducto(PurchaseItem item);
+    public CompraProducto toComprasProducto(PurchaseItemDTO item);
 
 }

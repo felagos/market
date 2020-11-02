@@ -1,6 +1,6 @@
 package com.fl.market.web.controller;
 
-import com.fl.market.domain.Purchase;
+import com.fl.market.domain.dto.PurchaseDTO;
 import com.fl.market.domain.service.PurchaseService;
 import com.fl.market.web.response.ResponseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class PurchaseController extends BaseController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<ResponseController<?>> save(@Valid @RequestBody Purchase purchase) {
+    public ResponseEntity<ResponseController<?>> save(@Valid @RequestBody PurchaseDTO purchase) {
         return this.createdResponse("Compra creada", purchaseService.save(purchase));
     }
 

@@ -1,6 +1,6 @@
 package com.fl.market.persistence.mapper;
 
-import com.fl.market.domain.Category;
+import com.fl.market.domain.dto.CategoryDTO;
 import com.fl.market.persistence.entity.Categoria;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -15,10 +15,10 @@ public interface CategoryMapper {
             @Mapping(source = "descripcion", target = "category"),
             @Mapping(source = "estado", target = "active"),
     })
-    public Category toCategory(Categoria categoria);
+    public CategoryDTO toCategory(Categoria categoria);
 
     @InheritInverseConfiguration
     @Mapping(target = "productos", ignore = true)
-    public Categoria toCategoria(Category category);
+    public Categoria toCategoria(CategoryDTO category);
 
 }

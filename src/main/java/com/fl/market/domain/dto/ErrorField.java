@@ -1,4 +1,4 @@
-package com.fl.market.domain;
+package com.fl.market.domain.dto;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
 package com.fl.market.persistence;
 
-import com.fl.market.domain.Product;
+import com.fl.market.domain.dto.ProductDTO;
 import com.fl.market.domain.repository.ProductRepository;
 import com.fl.market.persistence.crud.ProductoCrudRepository;
 import com.fl.market.persistence.entity.Producto;
@@ -21,24 +21,24 @@ public class ProductoRepository implements ProductRepository {
     private ProductMapper mapper;
 
     @Override
-    public List<Product> getAll() {
+    public List<ProductDTO> getAll() {
         var products = (List<Producto>) this.productCrudRepository.findAll();
         return this.mapper.toProducts(products);
     }
 
     @Override
-    public Optional<List<Product>> getByCategory(long categoryId) {
+    public Optional<List<ProductDTO>> getByCategory(long categoryId) {
         var productos = this.productCrudRepository.findByIdCategoriaOrderByNombreAsc(categoryId);
         return Optional.of(this.mapper.toProducts(productos));
     }
 
     @Override
-    public Optional<Product> getProduct(long productId) {
+    public Optional<ProductDTO> getProduct(long productId) {
         return this.productCrudRepository.findById(productId).map(producto -> this.mapper.toProduct(producto));
     }
 
     @Override
-    public Product save(Product product) {
+    public ProductDTO save(ProductDTO product) {
         Producto producto = this.mapper.toProducto(product);
         var newProduct = this.productCrudRepository.save(producto);
         return this.mapper.toProduct(newProduct);
@@ -50,7 +50,7 @@ public class ProductoRepository implements ProductRepository {
     }
 
     @Override
-    public Optional<Product> update(long productId, Product product) {
+    public Optional<ProductDTO> update(long productId, ProductDTO product) {
         return this.getProduct(productId).map(p -> {
             product.setProductId(p.getProductId());
             return this.save(product);

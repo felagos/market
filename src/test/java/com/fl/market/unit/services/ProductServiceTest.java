@@ -1,7 +1,7 @@
 package com.fl.market.unit.services;
 
+import com.fl.market.domain.dto.ProductDTO;
 import com.fl.market.unit.BaseUnitTest;
-import com.fl.market.domain.Product;
 import com.fl.market.domain.repository.ProductRepository;
 import com.fl.market.domain.service.ProductService;
 import org.junit.jupiter.api.Assertions;
@@ -25,8 +25,8 @@ public class ProductServiceTest extends BaseUnitTest {
     @InjectMocks
     private ProductService productService;
 
-    private final Product PRODUCT = new Product();
-    private final List<Product> PRODUCTS = Arrays.asList(new Product());
+    private final ProductDTO PRODUCT = new ProductDTO();
+    private final List<ProductDTO> PRODUCTS = Arrays.asList(new ProductDTO());
     private final Integer PRODUCT_ID = 1;
 
     @BeforeEach
@@ -99,7 +99,7 @@ public class ProductServiceTest extends BaseUnitTest {
 
     @Test
     public void save_product() {
-        Mockito.when(productRepository.save(any(Product.class))).thenReturn(PRODUCT);
+        Mockito.when(productRepository.save(any(ProductDTO.class))).thenReturn(PRODUCT);
         var response = productService.save(PRODUCT);
 
         Assertions.assertEquals(response, PRODUCT);

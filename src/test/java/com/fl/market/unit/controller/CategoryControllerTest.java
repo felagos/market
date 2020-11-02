@@ -1,6 +1,6 @@
 package com.fl.market.unit.controller;
 
-import com.fl.market.domain.Product;
+import com.fl.market.domain.dto.ProductDTO;
 import com.fl.market.domain.service.ProductService;
 import com.fl.market.unit.BaseUnitTest;
 import com.fl.market.web.controller.CategoryController;
@@ -25,7 +25,7 @@ public class CategoryControllerTest extends BaseUnitTest {
     @InjectMocks
     private CategoryController controller;
 
-    private final List<Product> PRODUCTS = Arrays.asList(new Product());
+    private final List<ProductDTO> PRODUCTS = Arrays.asList(new ProductDTO());
     private final Integer CATEGORY_ID = 1;
 
     @Test

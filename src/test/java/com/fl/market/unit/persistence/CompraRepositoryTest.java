@@ -1,8 +1,8 @@
 package com.fl.market.unit.persistence;
 
+import com.fl.market.domain.dto.PurchaseDTO;
 import com.fl.market.unit.BaseUnitTest;
-import com.fl.market.domain.Purchase;
-import com.fl.market.domain.PurchaseItem;
+import com.fl.market.domain.dto.PurchaseItemDTO;
 import com.fl.market.persistence.CompraRespository;
 import com.fl.market.persistence.crud.CompraCrudRepository;
 import com.fl.market.persistence.entity.Compra;
@@ -40,8 +40,8 @@ public class CompraRepositoryTest extends BaseUnitTest {
 
     private final List<Compra> COMPRAS = new ArrayList<>();
     private final Compra COMPRA = new Compra();
-    private final Purchase PURCHASE = new Purchase();
-    private final PurchaseItem ITEM = new PurchaseItem();
+    private final PurchaseDTO PURCHASE = new PurchaseDTO();
+    private final PurchaseItemDTO ITEM = new PurchaseItemDTO();
     private final String CLIENT_ID = "1";
     private final CompraProducto COMPRA_PRODUCTO = new CompraProducto();
 

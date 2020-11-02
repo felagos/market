@@ -1,6 +1,6 @@
 package com.fl.market.unit.controller;
 
-import com.fl.market.domain.Purchase;
+import com.fl.market.domain.dto.PurchaseDTO;
 import com.fl.market.domain.service.PurchaseService;
 import com.fl.market.unit.BaseUnitTest;
 import com.fl.market.web.controller.PurchaseController;
@@ -27,8 +27,8 @@ public class PurchaseControllerTest extends BaseUnitTest {
     @InjectMocks
     private PurchaseController controller;
 
-    private final List<Purchase> PURCHASES = Arrays.asList(new Purchase());
-    private final Purchase PURCHASE = new Purchase();
+    private final List<PurchaseDTO> PURCHASES = Arrays.asList(new PurchaseDTO());
+    private final PurchaseDTO PURCHASE = new PurchaseDTO();
     private final String CLIENT_ID = "11111";
 
     @Test
@@ -59,7 +59,7 @@ public class PurchaseControllerTest extends BaseUnitTest {
 
     @Test
     public void save_purchase() {
-        Mockito.when(service.save(any(Purchase.class))).thenReturn(PURCHASE);
+        Mockito.when(service.save(any(PurchaseDTO.class))).thenReturn(PURCHASE);
         var response = controller.save(PURCHASE);
 
         Assertions.assertEquals(response.getStatusCode(), HttpStatus.CREATED);

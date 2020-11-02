@@ -1,6 +1,6 @@
 package com.fl.market.domain.service;
 
-import com.fl.market.domain.Product;
+import com.fl.market.domain.dto.ProductDTO;
 import com.fl.market.domain.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,19 +14,19 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<Product> getAll() {
+    public List<ProductDTO> getAll() {
         return productRepository.getAll();
     }
 
-    public Optional<Product> getProduct(int productId) {
+    public Optional<ProductDTO> getProduct(int productId) {
         return productRepository.getProduct(productId);
     }
 
-    public Optional<List<Product>> getByCategory(int categoryId) {
+    public Optional<List<ProductDTO>> getByCategory(int categoryId) {
         return productRepository.getByCategory(categoryId);
     }
 
-    public Product save(Product product) {
+    public ProductDTO save(ProductDTO product) {
         return productRepository.save(product);
     }
 
@@ -37,7 +37,7 @@ public class ProductService {
         }).orElse(false);
     }
 
-    public Optional<Product> update(long productId, Product product) {
+    public Optional<ProductDTO> update(long productId, ProductDTO product) {
         return productRepository.update(productId, product);
     }
 

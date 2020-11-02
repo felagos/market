@@ -1,6 +1,6 @@
 package com.fl.market.unit.controller;
 
-import com.fl.market.domain.Product;
+import com.fl.market.domain.dto.ProductDTO;
 import com.fl.market.domain.service.ProductService;
 import com.fl.market.unit.BaseUnitTest;
 import com.fl.market.web.controller.ProductController;
@@ -25,8 +25,8 @@ public class ProductControllerTest extends BaseUnitTest {
     @InjectMocks
     private ProductController productController;
 
-    private final List<Product> PRODUCTS = Arrays.asList(new Product());
-    private final Product PRODUCT = new Product();
+    private final List<ProductDTO> PRODUCTS = Arrays.asList(new ProductDTO());
+    private final ProductDTO PRODUCT = new ProductDTO();
     private final Integer PRODUCT_ID = 1;
 
     @BeforeEach
@@ -66,7 +66,7 @@ public class ProductControllerTest extends BaseUnitTest {
 
     @Test
     public void save_product() {
-        Mockito.when(productService.save(any(Product.class))).thenReturn(PRODUCT);
+        Mockito.when(productService.save(any(ProductDTO.class))).thenReturn(PRODUCT);
         var response = productController.save(PRODUCT);
 
         Assertions.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
@@ -92,7 +92,7 @@ public class ProductControllerTest extends BaseUnitTest {
 
     @Test
     public void update_product_not_found() {
-        Mockito.when(productService.update(anyLong(), any(Product.class))).thenReturn(Optional.empty());
+        Mockito.when(productService.update(anyLong(), any(ProductDTO.class))).thenReturn(Optional.empty());
         var response = productController.update(Long.valueOf(PRODUCT_ID), PRODUCT);
 
         Assertions.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
@@ -100,7 +100,7 @@ public class ProductControllerTest extends BaseUnitTest {
 
     @Test
     public void update_product() {
-        Mockito.when(productService.update(anyLong(), any(Product.class))).thenReturn(Optional.of(PRODUCT));
+        Mockito.when(productService.update(anyLong(), any(ProductDTO.class))).thenReturn(Optional.of(PRODUCT));
         var response = productController.update(Long.valueOf(PRODUCT_ID), PRODUCT);
 
         Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);

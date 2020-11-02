@@ -1,9 +1,9 @@
-package com.fl.market.domain;
+package com.fl.market.domain.dto;
 
 import lombok.Data;
 
 @Data
-public class Product {
+public class ProductDTO {
 
     private long productId;
     private String name;
@@ -11,6 +11,6 @@ public class Product {
     private int price;
     private int stock;
     private boolean active;
-    private Category category;
+    private CategoryDTO category;
 
 }

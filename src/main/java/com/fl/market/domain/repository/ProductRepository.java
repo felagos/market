@@ -1,17 +1,17 @@
 package com.fl.market.domain.repository;
 
-import com.fl.market.domain.Product;
+import com.fl.market.domain.dto.ProductDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepository {
 
-    public List<Product> getAll();
-    public Optional<List<Product>> getByCategory(long categoryId);
-    public Optional<Product> getProduct(long productId);
-    public Product save(Product product);
+    public List<ProductDTO> getAll();
+    public Optional<List<ProductDTO>> getByCategory(long categoryId);
+    public Optional<ProductDTO> getProduct(long productId);
+    public ProductDTO save(ProductDTO product);
     public void delete(long productId);
-    public Optional<Product> update(long productId, Product product);
+    public Optional<ProductDTO> update(long productId, ProductDTO product);
 
 }

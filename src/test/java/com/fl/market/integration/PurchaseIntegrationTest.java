@@ -2,8 +2,8 @@ package com.fl.market.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fl.market.TestConfig;
-import com.fl.market.domain.Purchase;
-import com.fl.market.domain.PurchaseItem;
+import com.fl.market.domain.dto.PurchaseDTO;
+import com.fl.market.domain.dto.PurchaseItemDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -40,8 +40,8 @@ public class PurchaseIntegrationTest {
 
     @Test
     public void save_purchase() throws Exception {
-        var purchase = new Purchase();
-        var item = new PurchaseItem();
+        var purchase = new PurchaseDTO();
+        var item = new PurchaseItemDTO();
 
         item.setProductId(1);
         item.setActive(true);
@@ -62,8 +62,8 @@ public class PurchaseIntegrationTest {
 
     @Test
     public void save_purchase_wrong_field() throws Exception {
-        var purchase = new Purchase();
-        var item = new PurchaseItem();
+        var purchase = new PurchaseDTO();
+        var item = new PurchaseItemDTO();
 
         item.setProductId(1);
         item.setActive(true);

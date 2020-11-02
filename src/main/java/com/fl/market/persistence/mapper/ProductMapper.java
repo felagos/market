@@ -1,6 +1,6 @@
 package com.fl.market.persistence.mapper;
 
-import com.fl.market.domain.Product;
+import com.fl.market.domain.dto.ProductDTO;
 import com.fl.market.persistence.entity.Producto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -21,12 +21,12 @@ public interface ProductMapper {
             @Mapping(source = "estado", target = "active"),
             @Mapping(source = "categoria", target = "category"),
     })
-    public Product toProduct(Producto producto);
+    public ProductDTO toProduct(Producto producto);
 
-    public List<Product> toProducts(List<Producto> productos);
+    public List<ProductDTO> toProducts(List<Producto> productos);
 
     @InheritInverseConfiguration
     @Mapping(target = "codigoBarras", ignore = true)
-    public Producto toProducto(Product product);
+    public Producto toProducto(ProductDTO product);
 
 }

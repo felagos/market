@@ -1,6 +1,6 @@
 package com.fl.market.web.controller;
 
-import com.fl.market.domain.Product;
+import com.fl.market.domain.dto.ProductDTO;
 import com.fl.market.domain.service.ProductService;
 import com.fl.market.web.response.ResponseController;
 import io.swagger.annotations.ApiOperation;
@@ -37,13 +37,13 @@ public class ProductController extends BaseController {
     }
 
     @PutMapping("/{productId}")
-    public ResponseEntity<ResponseController<?>> update(@PathVariable Long productId, @RequestBody Product product) {
+    public ResponseEntity<ResponseController<?>> update(@PathVariable Long productId, @RequestBody ProductDTO product) {
         return productService.update(productId, product).map(newProduct -> this.okResponse("Producto actualizado", newProduct))
                 .orElse(this.notFoundResponse("Producto no encontrado"));
     }
 
     @PostMapping("/")
-    public ResponseEntity<ResponseController<?>> save(@RequestBody Product product) {
+    public ResponseEntity<ResponseController<?>> save(@RequestBody ProductDTO product) {
         return this.createdResponse("Producto creado", productService.save(product));
     }
 

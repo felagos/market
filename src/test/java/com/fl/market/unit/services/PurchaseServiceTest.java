@@ -1,7 +1,7 @@
 package com.fl.market.unit.services;
 
+import com.fl.market.domain.dto.PurchaseDTO;
 import com.fl.market.unit.BaseUnitTest;
-import com.fl.market.domain.Purchase;
 import com.fl.market.domain.repository.PurchaseRepository;
 import com.fl.market.domain.service.PurchaseService;
 import org.junit.jupiter.api.Assertions;
@@ -25,8 +25,8 @@ public class PurchaseServiceTest extends BaseUnitTest {
     @InjectMocks
     private PurchaseService purchaseService;
 
-    private final List<Purchase> PURCHASES = Arrays.asList(new Purchase());
-    private final Purchase PURCHASE = new Purchase();
+    private final List<PurchaseDTO> PURCHASES = Arrays.asList(new PurchaseDTO());
+    private final PurchaseDTO PURCHASE = new PurchaseDTO();
     private final String CLIENT_ID = "1";
 
     @BeforeEach

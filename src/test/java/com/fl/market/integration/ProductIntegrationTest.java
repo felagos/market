@@ -2,7 +2,7 @@ package com.fl.market.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fl.market.TestConfig;
-import com.fl.market.domain.Product;
+import com.fl.market.domain.dto.ProductDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class ProductIntegrationTest {
     @Autowired
     private ObjectMapper mapper;
 
-    private final Product PRODUCT = new Product();
+    private final ProductDTO PRODUCT = new ProductDTO();
 
     @BeforeEach
     public void init() {
