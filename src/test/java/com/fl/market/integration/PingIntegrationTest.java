@@ -8,13 +8,14 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @TestConfig
-public class CategoryIntegrationTest extends BaseIntegration {
+public class PingIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void get_category_by_id() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/category/8").header("Authorization", TOKEN)).andExpect(MockMvcResultMatchers.status().isOk());
+    public void doPing() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/ping/")).andExpect(MockMvcResultMatchers.status().isOk());
     }
+
 }
