@@ -73,4 +73,3 @@ jobs:
               docker stop market && docker rm market
             fi
             docker pull docker.pkg.github.com/$GIT_USER/market/market:latest
-            # docker run --restart unless-stopped --name market -d -p $EXPOSED:$APP_PORT docker.pkg.github.com/$GIT_USER/market/market:latest
