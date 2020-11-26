@@ -50,7 +50,7 @@ jobs:
           buildargs: PORT,DB_HOST,DB_NAME,DB_USER,DB_PASSWORD,JWT_EXPIRATION,JWT_KEY
         
   deploy:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     needs: build-image
     steps:
       - name: Deploy package to digitalocean
