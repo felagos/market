@@ -33,7 +33,7 @@ jobs:
       - name: Publish to Github Packages Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         env:
-          PORT: ${{ secrets.PORT }}
+          PORT: ${{ secrets.APP_PORT }}
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_USER: ${{ secrets.DB_USER }}
@@ -65,12 +65,4 @@ jobs:
           username: ${{ secrets.USER_HOST }}
           key: ${{ secrets.HOST_KEY }}
           port: ${{ secrets.HOST_PORT }}
-          envs: GIT_USER,GITHUB_TOKEN,APP_PORT,EXPOSED
-          script: |
-            docker login docker.pkg.github.com -u $GIT_USER -p $GITHUB_TOKEN
-            CONTAINER="$(docker ps --all --quiet --filter=name=market)"
-            if [ -n "$CONTAINER" ]; then
-              docker stop market && docker rm market
-            fi
-            docker pull docker.pkg.github.com/$GIT_USER/market/market:latest
-            docker run --restart unless-stopped --name market -d -p $EXPOSED:$APP_PORT docker.pkg.github.com/$GIT_USER/market/market:latest
+          envs: GIT_USER,GITHUB_TOKEN,PORT,EXPOSED
