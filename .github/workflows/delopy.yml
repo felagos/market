@@ -65,7 +65,7 @@ jobs:
           username: ${{ secrets.USER_HOST }}
           key: ${{ secrets.HOST_KEY }}
           port: ${{ secrets.HOST_PORT }}
-          envs: GIT_USER,GITHUB_TOKEN,APP_PORT,EXPOSED
+          envs: GIT_USER,GITHUB_TOKEN,PORT,EXPOSED
           script: |
             docker login docker.pkg.github.com -u $GIT_USER -p $GITHUB_TOKEN
             CONTAINER="$(docker ps --all --quiet --filter=name=market)"
