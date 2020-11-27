@@ -58,11 +58,11 @@ jobs:
         env:
             GIT_USER: ${{ secrets.GIT_USER }}
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            PORT: ${{ secrets.PORT }}
+            PORT: ${{ secrets.APP_PORT }}
             EXPOSED: ${{ secrets.PORT_EXPOSED }}
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.USER_HOST }}
-          key: ${{ secrets.HOST_KEY }}
-          port: ${{ secrets.HOST_PORT }}
+          key: ${{ secrets.KEY_HOST }}
+          port: ${{ secrets.PORT_HOST }}
           envs: GIT_USER,GITHUB_TOKEN,PORT,EXPOSED
