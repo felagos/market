@@ -66,4 +66,11 @@ jobs:
           key: ${{ secrets.KEY_HOST }}
           port: ${{ secrets.PORT_HOST }}
           envs: GIT_USER,GITHUB_TOKEN,APP_PORT,PORT_EXPOSED
-          script: whoami
+          script: |
+            docker login docker.pkg.github.com -u $GIT_USER -p $GITHUB_TOKEN
+            CONTAINER="$(docker ps --all --quiet --filter=name=market)"
+            if [ -n "$CONTAINER" ]; then
+              docker stop $CONTAINER && docker rm $CONTAINER
+            fi
+            docker pull docker.pkg.github.com/$GIT_USER/market/market:latest
+            docker run --restart unless-stopped --name market -d -p $PORT_EXPOSED:$APP_PORT docker.pkg.github.com/$GIT_USER/market/market:latest
