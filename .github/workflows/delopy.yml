@@ -31,4 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build image
-        run: docker-compose -f docker-compose.prod.yml build
+        run: |
+          docker-compose -f docker-compose.prod.yml build
+          docker login docker.pkg.github.com -u ${{ secrets.GIT_USER }} -p ${{ secrets.GITHUB_TOKEN }}
+          docker push docker.pkg.github.com/${{ secrets.GIT_USER }}/market/market:latest
