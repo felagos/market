@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   market:
-    image: market
+    image: docker.pkg.github.com/felagos/market/market:latest
     container_name: market
     ports: 
       - "3001:8080"
