@@ -4,8 +4,6 @@ services:
   market:
     image: docker.pkg.github.com/${USER}/market/market:latest
     container_name: market
-    ports: 
-      - "${EXPOSED_PORT}:${APP_PORT}"
     environment:
       PORT: ${APP_PORT}
       DB_HOST: ${DB_HOST}
