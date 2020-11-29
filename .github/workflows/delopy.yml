@@ -77,6 +77,7 @@ jobs:
               docker stop $CONTAINER && docker rm $CONTAINER
             fi
             docker run --restart unless-stopped --name market -d -p $EXPOSED_PORT:$APP_PORT \
+            --env PORT=$APP_PORT \
             --env DB_HOST=$DB_HOST \
             --env DB_NAME=$DB_NAME \
             --env DB_USER=$DB_USER \
