@@ -1,29 +1,17 @@
-FROM openjdk:13
+FROM adoptopenjdk:13-jdk-hotspot as builder
 
-WORKDIR "/usr/src/app"
-
-ARG PORT
-ARG DB_HOST
-ARG DB_NAME
-ARG DB_USER
-ARG DB_PASSWORD
-ARG JWT_EXPIRATION
-ARG JWT_KEY
-
-ENV PORT=$PORT
-ENV DB_HOST=$DB_HOST
-ENV DB_NAME=$DB_NAME
-ENV DB_USER=$DB_USER
-ENV DB_PASSWORD=$DB_PASSWORD
-ENV JWT_EXPIRATION=$JWT_EXPIRATION
-ENV JWT_KEY=$JWT_KEY
+WORKDIR /home/gradle/app
 
 COPY [".", "./"]
 
-RUN ./gradlew build
+RUN ./gradlew build --no-daemon
 
-RUN mv ./build/libs/*.jar ./build/libs/app.jar
+FROM adoptopenjdk:13-jdk-hotspot
+
+WORKDIR /usr/src/app
+
+COPY --from=builder /home/gradle/app/build/libs/*.jar ./app.jar
 
 EXPOSE $PORT
 
-CMD ["java", "-jar", "-Dspring.profiles.active=prod", "./build/libs/app.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=prod", "./app.jar"]

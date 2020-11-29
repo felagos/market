@@ -35,3 +35,10 @@ out/
 
 
 bin/
+
+docker-compose.prod.yml
+
+jwtRS256.key
+jwtRS256.key.pub
+Procfile
+.github/*

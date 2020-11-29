@@ -30,47 +30,5 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v2
-      - name: Publish to Github Packages Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
-        env:
-          PORT: ${{ secrets.APP_PORT }}
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_NAME: ${{ secrets.DB_NAME }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          JWT_EXPIRATION: ${{ secrets.JWT_EXPIRATION }}
-          JWT_KEY: ${{ secrets.JWT_KEY }}
-        with:
-          name: ${{ secrets.GIT_USER }}/market/market
-          registry: docker.pkg.github.com
-          username: ${{ secrets.GIT_USER }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          dockerfile: Dockerfile
-          tags: latest
-          buildargs: PORT,DB_HOST,DB_NAME,DB_USER,DB_PASSWORD,JWT_EXPIRATION,JWT_KEY
-        
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build-image
-    steps:
-      - name: Deploy package to digitalocean
-        uses: appleboy/ssh-action@master
-        env:
-          GIT_USER: ${{ secrets.GIT_USER }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          APP_PORT: ${{ secrets.APP_PORT }}
-          PORT_EXPOSED: ${{ secrets.PORT_EXPOSED }}
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.USER_HOST }}
-          key: ${{ secrets.KEY_HOST }}
-          port: ${{ secrets.PORT_HOST }}
-          envs: GIT_USER,GITHUB_TOKEN,APP_PORT,PORT_EXPOSED
-          script: |
-            docker login docker.pkg.github.com -u $GIT_USER -p $GITHUB_TOKEN
-            CONTAINER="$(docker ps --all --quiet --filter=name=market)"
-            if [ -n "$CONTAINER" ]; then
-              docker stop $CONTAINER && docker rm $CONTAINER
-            fi
-            docker pull docker.pkg.github.com/$GIT_USER/market/market:latest
-            docker run --restart unless-stopped --name market -d -p $PORT_EXPOSED:$APP_PORT docker.pkg.github.com/$GIT_USER/market/market:latest
+      - name: Build image
+        run: docker-compose -f docker-compose.prod.yml build
