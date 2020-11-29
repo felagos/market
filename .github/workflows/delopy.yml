@@ -42,4 +42,4 @@ jobs:
         run: |
           docker-compose -f docker-compose.prod.yml build
           docker login docker.pkg.github.com -u ${{ secrets.GIT_USER }} -p ${{ secrets.GITHUB_TOKEN }}
-          docker push market:latest
+          docker push docker.pkg.github.com/felagos/market/market:latest
