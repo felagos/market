@@ -57,12 +57,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APP_PORT: ${{ secrets.APP_PORT }}
           EXPOSED_PORT: ${{ secrets.EXPOSED_PORT }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          JWT_EXPIRATION: ${{ secrets.JWT_EXPIRATION }}
+          JWT_KEY: ${{ secrets.JWT_KEY }}
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.USER_HOST }}
           key: ${{ secrets.KEY_HOST }}
           port: ${{ secrets.PORT_HOST }}
-          envs: GIT_USER,GITHUB_TOKEN,APP_PORT,EXPOSED_PORT
+          envs: GIT_USER,GITHUB_TOKEN,APP_PORT,EXPOSED_PORT,DB_HOST,DB_NAME,DB_USER,DB_PASSWORD,JWT_EXPIRATION,JWT_KEY
           script: |
             docker login docker.pkg.github.com -u $GIT_USER -p $GITHUB_TOKEN
             docker pull docker.pkg.github.com/$GIT_USER/market/market:latest
@@ -70,4 +76,11 @@ jobs:
             if [ -n "$CONTAINER" ]; then
               docker stop $CONTAINER && docker rm $CONTAINER
             fi
-            docker run --restart unless-stopped --name market -d -p $EXPOSED_PORT:$APP_PORT docker.pkg.github.com/$GIT_USER/market/market:latest
+            docker run --restart unless-stopped --name market -d -p $EXPOSED_PORT:$APP_PORT \
+            --env DB_HOST=$DB_HOST \
+            --env DB_NAME=$DB_NAME \
+            --env DB_USER=$DB_USER \
+            --env DB_PASSWORD=$DB_PASSWORD \
+            --env JWT_KEY=$JWT_KEY \
+            --env JWT_EXPIRATION=$JWT_EXPIRATION \
+            docker.pkg.github.com/$GIT_USER/market/market:latest
