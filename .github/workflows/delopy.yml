@@ -70,4 +70,4 @@ jobs:
             if [ -n "$CONTAINER" ]; then
               docker stop $CONTAINER && docker rm $CONTAINER
             fi
-            docker run --restart unless-stopped --name market -d -p EXPOSED_PORT:$APP_PORT docker.pkg.github.com/$GIT_USER/market/market:latest
+            docker run --restart unless-stopped --name market -d -p $EXPOSED_PORT:$APP_PORT docker.pkg.github.com/$GIT_USER/market/market:latest
